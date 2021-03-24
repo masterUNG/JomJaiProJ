@@ -46,25 +46,62 @@ class _UnSuccessTenSecState extends State<UnSuccessTenSec> {
       ),
       body: catigoryModels.length == 0
           ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: catigoryModels.length,
-              itemBuilder: (context, index) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(catigoryModels[index].name),
-                  ElevatedButton(
-                    onPressed: () {
-                      print('You Tap index ==> $index');
-                      editDataWhereId(catigoryModels[index].id);
-                    },
-                    child: Text('Active'),
-                    style: ElevatedButton.styleFrom(
-                        primary:
-                            colors[int.parse(catigoryModels[index].status)]),
+          : Column(
+              children: [
+                Container(decoration: BoxDecoration(color: Colors.grey.shade400),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Text('Cat'),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Text('Url Detail'),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Text('Action'),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                buildListView(),
+              ],
             ),
+    );
+  }
+
+  ListView buildListView() {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: ScrollPhysics(),
+      itemCount: catigoryModels.length,
+      itemBuilder: (context, index) => Container(
+        height: 60,
+        child: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Text(catigoryModels[index].name),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(catigoryModels[index].url),
+              ),
+              Expanded(
+                flex: 1,
+                child: createButton(catigoryModels[index].status, index),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -72,5 +109,26 @@ class _UnSuccessTenSecState extends State<UnSuccessTenSec> {
     String path =
         '${MyConstant().domain}/ungposbee/editDataWhereId.php?isAdd=true&id=$id&status=1';
     await Dio().get(path).then((value) => readAllData());
+  }
+
+  Widget createButton(String status, int index) {
+    switch (status) {
+      case '0':
+        return ElevatedButton(
+          onPressed: () {
+            print('You Tap index ==> $index');
+            editDataWhereId(catigoryModels[index].id);
+          },
+          child: Text('Active'),
+          style: ElevatedButton.styleFrom(primary: colors[0]),
+        );
+        break;
+      case '1':
+        return SizedBox();
+        break;
+      default:
+        return SizedBox();
+        break;
+    }
   }
 }
