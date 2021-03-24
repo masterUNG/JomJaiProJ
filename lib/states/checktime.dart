@@ -1,6 +1,7 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
+import 'package:jomjaiproj/utilty/mycounttime.dart';
 
 class CheckTime extends StatefulWidget {
   @override
@@ -14,26 +15,10 @@ class _CheckTimeState extends State<CheckTime> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    countTime();
+    countTime(context);
   }
 
-  Future<Null> countTime() async {
-    Duration duration = Duration(seconds: 1);
-    await Timer(
-      duration,
-      () {
-        setState(() {
-          showTime--;
-        });
-        if (showTime == 0) {
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/unSuccessTenSec', (route) => false);
-        } else {
-          countTime();
-        }
-      },
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
