@@ -8,6 +8,8 @@ class CheckTime extends StatefulWidget {
 }
 
 class _CheckTimeState extends State<CheckTime> {
+  int showTime = 10;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -16,11 +18,21 @@ class _CheckTimeState extends State<CheckTime> {
   }
 
   Future<Null> countTime() async {
-    Duration duration = Duration(seconds: 10);
+    Duration duration = Duration(seconds: 1);
     await Timer(
-        duration,
-        () => Navigator.pushNamedAndRemoveUntil(
-            context, '/unSuccessTenSec', (route) => false));
+      duration,
+      () {
+        setState(() {
+          showTime--;
+        });
+        if (showTime == 0) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/unSuccessTenSec', (route) => false);
+        } else {
+          countTime();
+        }
+      },
+    );
   }
 
   @override
@@ -30,10 +42,19 @@ class _CheckTimeState extends State<CheckTime> {
         title: Text('Check Time'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context, '/successTenSec', (route) => false),
-          child: Text('Tap me 10 sec'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              '$showTime sec',
+              style: TextStyle(fontSize: 30),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                  context, '/successTenSec', (route) => false),
+              child: Text('Tap me 10 sec'),
+            ),
+          ],
         ),
       ),
     );
