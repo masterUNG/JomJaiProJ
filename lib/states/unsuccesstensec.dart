@@ -46,32 +46,46 @@ class _UnSuccessTenSecState extends State<UnSuccessTenSec> {
       ),
       body: catigoryModels.length == 0
           ? Center(child: CircularProgressIndicator())
-          : Column(
+          : Stack(
               children: [
-                Container(decoration: BoxDecoration(color: Colors.grey.shade400),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Text('Cat'),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Text('Url Detail'),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Text('Action'),
-                        ),
-                      ],
-                    ),
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 50,
+                      ),
+                      buildListView(),
+                    ],
                   ),
                 ),
-                buildListView(),
+                buildHeader(),
               ],
             ),
+    );
+  }
+
+  Container buildHeader() {
+    return Container(
+      decoration: BoxDecoration(color: Colors.grey.shade400),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Text('Cat'),
+            ),
+            Expanded(
+              flex: 3,
+              child: Text('Url Detail'),
+            ),
+            Expanded(
+              flex: 1,
+              child: Text('Action'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
