@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "799761999980",
+    "project_id": "jomjaiproj",
+    "storage_bucket": "jomjaiproj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799761999980:android:abcd1a0eac979f8d209049",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.jomjaiproj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799761999980-sgos81uldt9c9nc6k1nfq2uc5bst5nuh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBODyAUMI9ol4IPQi2WMwIgX__Un5YSlYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799761999980-sgos81uldt9c9nc6k1nfq2uc5bst5nuh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
