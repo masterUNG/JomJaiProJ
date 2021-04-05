@@ -10,7 +10,7 @@ class _TestNotiState extends State<TestNoti> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>Navigator.pushNamed(context, '/showMap'),
+        onPressed: () => Navigator.pushNamed(context, '/showMap'),
         child: Icon(Icons.map),
       ),
       appBar: AppBar(

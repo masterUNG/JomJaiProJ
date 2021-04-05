@@ -25,4 +25,3 @@ class LocationModel {
     return data;
   }
 }
-

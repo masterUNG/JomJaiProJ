@@ -12,11 +12,9 @@ class ShowMap extends StatefulWidget {
 
 class _ShowMapState extends State<ShowMap> {
   List<LocationModel> locationModels = [];
-  
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     readAllLocation();
   }
